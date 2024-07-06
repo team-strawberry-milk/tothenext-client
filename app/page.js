@@ -15,7 +15,7 @@ export default function Main() {
                 </h2>
 
                 <h3 className="font-heading mb-8 text-xl font-bold">
-                  To he Next와 함께 미래를 꿈꾸세요!
+                  To the Next와 함께 미래를 꿈꾸세요!
                 </h3>
 
                 <p className="mb-8 text-l text-gray-500 font-medium">
