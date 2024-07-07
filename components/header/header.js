@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter } from "next/router";
 import styled from "styled-components";
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid blue;
+
   padding: 0 20px;
 `;
 
