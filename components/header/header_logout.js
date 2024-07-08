@@ -1,10 +1,13 @@
 "use client";
 
 import styled from "styled-components";
+import { BsPerson } from "react-icons/bs";
+
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: relative;
   padding: 0 20px;
 `;
@@ -63,7 +66,18 @@ const SignUpButton = styled.a`
   }
 `;
 
-export default function Header() {
+const Profileimg = styled(BsPerson)`
+  width: auto;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  border: 1.5px solid black;
+  border-radius: 50%;
+  padding: 3px;
+  margin-top: 2px;
+`;
+
+export default function Header2() {
   return (
     <HeaderContainer>
       <Logoimg src="/tothenext_logo.png" alt="logo" />
@@ -74,8 +88,8 @@ export default function Header() {
         <NavLink href="/profile">Profile</NavLink>
       </Nav>
       <ButtonContainer>
-        <LoginButton href="/signin">Log in</LoginButton>
-        <SignUpButton href="/signup">Sign Up</SignUpButton>
+        <Profileimg />
+        <LoginButton href="/signin">Log out</LoginButton>
       </ButtonContainer>
     </HeaderContainer>
   );
