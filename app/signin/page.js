@@ -3,6 +3,7 @@
 import TextInput from "@/components/auth/TextInput";
 import { useState } from "react";
 import Button from "@/components/common/Button";
+import AuthButton from "@/components/auth/AuthButton";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -33,8 +34,13 @@ export default function SignIn() {
             />
           </div>
         </form>
-        <div className="mt-8 space-y-3">
+        <div className="mt-8">
           <Button text="Sign In" onClick={() => console.log("clicked")} />
+          <AuthButton
+            text="Sign in with Google"
+            image="/images/forms/google.svg"
+            onClick={() => console.log("Sign in with Google")}
+          />
         </div>
       </div>
     </section>
