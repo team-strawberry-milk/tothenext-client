@@ -2,6 +2,7 @@
 
 import TextInput from "@/components/auth/TextInput";
 import { useState } from "react";
+import Button from "@/components/common/Button";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -32,6 +33,9 @@ export default function SignIn() {
             />
           </div>
         </form>
+        <div className="mt-8 space-y-3">
+          <Button text="Sign In" onClick={() => console.log("clicked")} />
+        </div>
       </div>
     </section>
   );
