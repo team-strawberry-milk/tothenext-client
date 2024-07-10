@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center py-5 px-11 bg-gray-100 border-t border-gray-300">
+    <footer className="flex justify-between items-center py-5 px-11 bg-gray-100 border-t border-gray-300 mt-20 absolute bottom-0 left-0 right-0">
       <div className="flex flex-col items-start pr-1/2">
         <img
           src="/tothenext_logo.png"
