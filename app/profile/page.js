@@ -1,205 +1,5 @@
 "use client";
 import { useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import { FaRegEdit } from "react-icons/fa";
-
-const GlobalStyle = createGlobalStyle`
-    body{
-        background-color: #F2F5FA;
-        margin: 0;
-    }
-`;
-const ProfilePageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 5vh;
-  gap: 3vh;
-`;
-
-const IntroduceContainer = styled.div`
-  display: flex;
-  width: 90vw;
-  padding: 1vw;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  background-color: #ffffff;
-`;
-
-const IntroduceTopWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1vh;
-`;
-const IntroduceText = styled.div`
-  font-size: 2rem;
-  padding-left: 1vw;
-`;
-const AddBTN = styled.button`
-  font-size: 1rem;
-  background-color: #4b58a5;
-  width: 70px;
-  height: 30px;
-  border-radius: 5px;
-  color: #ffffff;
-`;
-
-const SelfIntroductionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const SelfIntroduction = styled.div`
-  padding: 0px 10px;
-`;
-
-const ToggleAndCompany = styled.div`
-  display: flex;
-
-  height: 6vh;
-  border-radius: 5px;
-  padding: 10px;
-  align-items: center;
-  background-color: ${(props) => (props.index % 2 === 0 ? "white" : "#f2f5fa")};
-`;
-
-const EditBTN = styled(FaRegEdit)`
-  font-size: 1rem;
-  cursor: pointer;
-`;
-
-const ToggleAndEdit = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const Toggles = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const ToggleBTN = styled.button``;
-
-const CompanyName = styled.div``;
-
-const SelfIntroductionContent = styled.div`
-  padding: 15px 25px;
-`;
-
-const CheckInformation = styled.div`
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  display: flex;
-  width: 90vw;
-  padding-top: 1vw;
-
-  border-radius: 5px;
-  flex-direction: column;
-  background-color: #ffffff;
-`;
-
-const CheckInformationText = styled.div`
-  font-size: 2rem;
-  padding-left: 2vw;
-`;
-
-const CertificateInformationBar = styled.div`
-  display: flex;
-  padding: 0.8vw;
-  border-top: 1px solid #eeeeef;
-  justify-content: space-between;
-`;
-
-const CertificationBar = styled.div`
-  display: flex;
-  width: 30vw;
-  justify-content: space-around;
-`;
-
-const CertificateNameBar = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateIssuanceDateBar = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateExpirationDateBar = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateSerialNumberBar = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateCopyBar = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 7vw;
-  margin-right: 50px;
-`;
-
-const CertificateInformation = styled.div`
-  display: flex;
-  padding: 0.8vw;
-  background-color: ${(props) => (props.index % 2 === 0 ? "white" : "#f2f5fa")};
-  justify-content: space-between;
-`;
-
-const Certification = styled.div`
-  display: flex;
-  width: 30vw;
-  justify-content: space-around;
-`;
-
-const CertificateName = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateIssuanceDate = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateExpirationDate = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateSerialNumber = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 10vw;
-`;
-
-const CertificateSerialNumberWrapper = styled.div`
-  display: flex;
-`;
-
-const CertificateCopy = styled.button`
-  display: flex;
-  justify-content: center;
-  width: 7vw;
-  margin-right: 50px;
-  cursor: pointer;
-`;
 
 export default function Profile() {
   const [openIndexes, setOpenIndexes] = useState([]);
@@ -215,93 +15,69 @@ export default function Profile() {
   };
 
   return (
-    <ProfilePageWrapper>
-      <GlobalStyle />
-      <IntroduceContainer>
-        <IntroduceTopWrapper>
-          <IntroduceText>자기소개서, 이력서</IntroduceText>
-          <AddBTN>Add</AddBTN>
-        </IntroduceTopWrapper>
-        <SelfIntroductionContainer>
-          <SelfIntroduction>
-            <ToggleAndCompany index={0}>
-              <ToggleAndEdit>
-                <Toggles>
-                  <ToggleBTN onClick={() => toggleClick(0)}>
-                    {openIndexes.includes(0) ? "▼" : "▶"}
-                  </ToggleBTN>
-                  <CompanyName>현대중공업 2024 상반기 지원</CompanyName>
-                </Toggles>
-                <EditBTN />
-              </ToggleAndEdit>
-            </ToggleAndCompany>
-
-            {openIndexes.includes(0) && (
-              <SelfIntroductionContent>자기소개 내용1</SelfIntroductionContent>
-            )}
-          </SelfIntroduction>
-          <SelfIntroduction>
-            <ToggleAndCompany index={1}>
-              <ToggleAndEdit>
-                <Toggles>
-                  <ToggleBTN onClick={() => toggleClick(1)}>
-                    {openIndexes.includes(1) ? "▼" : "▶"}
-                  </ToggleBTN>
-                  <CompanyName>현대중공업 2024 상반기 지원</CompanyName>
-                </Toggles>
-                <EditBTN />
-              </ToggleAndEdit>
-            </ToggleAndCompany>
-
-            {openIndexes.includes(1) && (
-              <SelfIntroductionContent>자기소개 내용1</SelfIntroductionContent>
-            )}
-          </SelfIntroduction>
-          <SelfIntroduction>
-            <ToggleAndCompany index={2}>
-              <ToggleAndEdit>
-                <Toggles>
-                  <ToggleBTN onClick={() => toggleClick(2)}>
-                    {openIndexes.includes(0) ? "▼" : "▶"}
-                  </ToggleBTN>
-                  <CompanyName>현대중공업 2024 상반기 지원</CompanyName>
-                </Toggles>
-                <EditBTN />
-              </ToggleAndEdit>
-            </ToggleAndCompany>
-
-            {openIndexes.includes(2) && (
-              <SelfIntroductionContent>자기소개 내용1</SelfIntroductionContent>
-            )}
-          </SelfIntroduction>
-        </SelfIntroductionContainer>
-      </IntroduceContainer>
-
-      <CheckInformation>
-        <CheckInformationText>스펙 정보 확인</CheckInformationText>
-        <CertificateInformationBar>
-          <CertificationBar>
-            <CertificateNameBar>종류</CertificateNameBar>
-            <CertificateIssuanceDateBar>발급일</CertificateIssuanceDateBar>
-            <CertificateExpirationDateBar>만료일</CertificateExpirationDateBar>
-          </CertificationBar>
-          <CertificateSerialNumberWrapper>
-            <CertificateSerialNumberBar>일련번호</CertificateSerialNumberBar>
-            <CertificateCopyBar />
-          </CertificateSerialNumberWrapper>
-        </CertificateInformationBar>
-        <CertificateInformation>
-          <Certification>
-            <CertificateName>TOEIC</CertificateName>
-            <CertificateIssuanceDate>2024.07.04</CertificateIssuanceDate>
-            <CertificateExpirationDate>2025.07.04</CertificateExpirationDate>
-          </Certification>
-          <CertificateSerialNumberWrapper>
-            <CertificateSerialNumber>abcdeffdksfl11</CertificateSerialNumber>
-            <CertificateCopy>복사하기</CertificateCopy>
-          </CertificateSerialNumberWrapper>
-        </CertificateInformation>
-      </CheckInformation>
-    </ProfilePageWrapper>
+    <div className="flex flex-col justify-center items-center w-full mt-[5vh] gap-[3vh]">
+      <div className="flex flex-col w-[90vw] p-[1vw] rounded-md shadow-md bg-white">
+        <div className="flex justify-between items-center mb-[1vh]">
+          <div className="text-2xl pl-[1vw]">자기소개서, 이력서</div>
+          <button className="text-sm bg-[#4b58a5] w-16 h-8 rounded text-white">
+            Add
+          </button>
+        </div>
+        <div className="flex flex-col">
+          {[
+            "현대중공업 2024 상반기 지원",
+            "현대중공업 2024 상반기 지원",
+            "현대중공업 2024 상반기 지원",
+          ].map((company, index) => (
+            <div key={index} className="flex flex-col">
+              <div
+                className={`flex h-[6vh] rounded-md p-2 items-center ${
+                  index % 2 === 0 ? "bg-white" : "bg-[#f2f5fa]"
+                }`}
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex gap-2">
+                    <button onClick={() => toggleClick(index)}>
+                      {openIndexes.includes(index) ? "▼" : "▶"}
+                    </button>
+                    <div>{company}</div>
+                  </div>
+                </div>
+              </div>
+              {openIndexes.includes(index) && (
+                <div className="p-4">자기소개 내용{index + 1}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col w-[90vw] pt-[1vw] rounded-md shadow-md bg-white">
+        <div className="text-2xl pl-[2vw]">스펙 정보 확인</div>
+        <div className="flex p-[0.8vw] border-t border-[#eeeeef] justify-between">
+          <div className="flex w-[30vw] justify-around">
+            <div className="flex justify-center w-[10vw]">종류</div>
+            <div className="flex justify-center w-[10vw]">발급일</div>
+            <div className="flex justify-center w-[10vw]">만료일</div>
+          </div>
+          <div className="flex">
+            <div className="flex justify-center w-[10vw]">일련번호</div>
+            <div className="flex justify-center w-[7vw] mr-12" />
+          </div>
+        </div>
+        <div className="flex p-[0.8vw] bg-white justify-between">
+          <div className="flex w-[30vw] justify-around">
+            <div className="flex justify-center w-[10vw]">TOEIC</div>
+            <div className="flex justify-center w-[10vw]">2024.07.04</div>
+            <div className="flex justify-center w-[10vw]">2025.07.04</div>
+          </div>
+          <div className="flex">
+            <div className="flex justify-center w-[10vw]">abcdeffdksfl11</div>
+            <button className="flex justify-center w-[7vw] mr-12 cursor-pointer">
+              복사하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
