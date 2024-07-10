@@ -19,9 +19,14 @@ export default function SelfIntoduction() {
         "현대중공업 2024 상반기 지원",
         "현대중공업 2024 상반기 지원",
       ].map((company, index) => (
-        <div key={index} className="flex flex-col">
+        <div
+          key={index}
+          className={`flex flex-col rounded-md p-2 ${
+            index % 2 === 0 ? "bg-white" : "bg-[#f2f5fa]"
+          }`}
+        >
           <div
-            className={`flex h-[6vh] rounded-md p-2 items-center ${
+            className={`flex h-20  rounded-md p-2 items-center ${
               index % 2 === 0 ? "bg-white" : "bg-[#f2f5fa]"
             }`}
           >
