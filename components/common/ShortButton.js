@@ -1,5 +1,4 @@
 export default function Button({ text, onClick }) {
-    
   return (
     <div className="flex flex-wrap items-center -m-3">
       <div className="w-auto p-3">
