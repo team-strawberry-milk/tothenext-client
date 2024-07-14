@@ -8,11 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary-yello": "#FFC42C",
+        "primary-yellow": "#FFC42C",
+        "primary-lightyellow": "#FFDC82",
         "primary-blue": "#305AD9",
-        "second-blue": "#4B58A5",
+        "primary-lightblue": "#96AEF9",
+        "second-blue": "#1B40B0",
+        "second-lightblue": "#7899FF",
         "third-blue": "#182859",
-        "primary-brown": "#260F01",
+        "third-lightblue": "#6E7A9E",
+        "primary-brown": "#603B24",
+        "primary-lightbrown": "#BC8461",
+        "primary-green": "#00C844",
+        "primary-lightgreen": "#8FDDA9",
+        "primary-black": "#000000",
+        "primary-white": "#FFFFFF",
       },
     },
   },
