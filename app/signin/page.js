@@ -19,7 +19,7 @@ export default function SignIn() {
             const data = await loginUser(email, password);
             console.log(data);
             alert("로그인에 성공했습니다");
-            router.push("/activity");
+            router.push("/");
         } catch (error) {
             console.error(error.message);
             alert("로그인에 실패했습니다");
