@@ -21,8 +21,19 @@ export const loginUser = async (email, password) => {
             email: email,
             password: password,
         });
+        const { token } = response.data;
+        if (typeof window !== "undefined") {
+            localStorage.setItem("logintoken", token);
+        }
         return response.data;
     } catch (error) {
         throw new Error("로그인에 실패했습니다.");
     }
+};
+
+export const isLoggedIn = () => {
+    if (typeof window !== "undefined") {
+        return !!localStorage.getItem("logintoken");
+    }
+    return false;
 };

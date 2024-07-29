@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Button from "@/components/common/Button";
 import AuthButton from "@/components/auth/AuthButton";
 import { useRouter } from "next/navigation";
-import { loginUser } from "../../api/registerUser.js";
+import { loginUser, isLoggedIn } from "../../api/registerUser.js";
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
@@ -25,6 +25,12 @@ export default function SignIn() {
             alert("로그인에 실패했습니다");
         }
     };
+
+    useEffect(() => {
+        if (isLoggedIn()) {
+            router.push("/");
+        }
+    }, [router]);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
