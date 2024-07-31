@@ -4,8 +4,27 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import { registerUser } from "../../api/registerUser.js";
 import { useRouter } from "next/navigation";
+import ReactModal from "react-modal";
+import { Modal } from "@/components/common/Modal.js";
 
 export default function Signup() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [redirectAfterClose, setRedirectAfterClose] = useState(false);
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setErrorMessage("");
+        if (redirectAfterClose) {
+            router.push("/");
+        }
+    };
+    const openModal = (message, redirect = false) => {
+        setErrorMessage(message);
+        setModalIsOpen(true);
+        setRedirectAfterClose(redirect);
+    };
+
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -21,15 +40,14 @@ export default function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== passwordConfirm) {
-            alert("비밀번호가 일치하지 않습니다.");
+            openModal("비밀번호가 일치하지 않습니다.");
             return;
         }
 
         try {
             const data = await registerUser(email, name, password);
             console.log(data);
-            alert("회원가입이 완료되었습니다!");
-            router.push("/");
+            openModal("회원가입이 완료되었습니다!", true);
         } catch (error) {
             console.error(error.message);
         }
@@ -113,6 +131,11 @@ export default function Signup() {
                     </button>
                 </form>
             </div>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                errorMessage={errorMessage}
+            />
         </div>
     );
 }

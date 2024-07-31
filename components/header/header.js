@@ -3,8 +3,26 @@
 import React, { useState, useEffect } from "react";
 import { isLoggedIn as checkLoggedIn } from "@/api/registerUser";
 import { BsPerson } from "react-icons/bs";
+import { Modal } from "../common/Modal";
 
 export default function Header() {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [redirectAfterClose, setRedirectAfterClose] = useState(false);
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setErrorMessage("");
+        if (redirectAfterClose) {
+            router.push("/");
+        }
+    };
+    const openModal = (message, redirect = false) => {
+        setErrorMessage(message);
+        setModalIsOpen(true);
+        setRedirectAfterClose(redirect);
+    };
+
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -13,6 +31,7 @@ export default function Header() {
 
     const handleLogout = () => {
         localStorage.removeItem("logintoken");
+        openModal("로그아웃되었습니다");
         setLoggedIn(false);
     };
 
@@ -81,6 +100,11 @@ export default function Header() {
                     </>
                 )}
             </div>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                errorMessage={errorMessage}
+            />
         </header>
     );
 }

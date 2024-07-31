@@ -7,24 +7,7 @@ import AuthButton from "@/components/auth/AuthButton";
 import { useRouter } from "next/navigation";
 import { loginUser, isLoggedIn } from "../../api/registerUser.js";
 import ReactModal from "react-modal";
-
-const customStyles = {
-    content: {
-        top: "50%",
-        left: "50%",
-        right: "auto",
-        bottom: "auto",
-        marginRight: "-50%",
-        transform: "translate(-50%, -50%)",
-        padding: "20px",
-        borderRadius: "10px",
-        backgroundColor: "white",
-        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-    },
-    overlay: {
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-};
+import { Modal } from "@/components/common/Modal.js";
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
@@ -35,18 +18,17 @@ export default function SignIn() {
     const [errorMessage, setErrorMessage] = useState("");
     const [redirectAfterClose, setRedirectAfterClose] = useState(false);
 
-    const openModal = (message, redirect = false) => {
-        setErrorMessage(message);
-        setModalIsOpen(true);
-        setRedirectAfterClose(redirect);
-    };
-
     const closeModal = () => {
         setModalIsOpen(false);
         setErrorMessage("");
         if (redirectAfterClose) {
             router.push("/");
         }
+    };
+    const openModal = (message, redirect = false) => {
+        setErrorMessage(message);
+        setModalIsOpen(true);
+        setRedirectAfterClose(redirect);
     };
 
     const handleSubmit = async (e) => {
@@ -158,21 +140,11 @@ export default function SignIn() {
                     />
                 </div>
             </div>
-            <ReactModal
+            <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                style={customStyles}
-            >
-                <p>{errorMessage}</p>
-                <div className="flex justify-center">
-                    <button
-                        onClick={closeModal}
-                        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                    >
-                        닫기
-                    </button>
-                </div>
-            </ReactModal>
+                errorMessage={errorMessage}
+            />
         </section>
     );
 }
