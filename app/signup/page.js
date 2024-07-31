@@ -6,6 +6,8 @@ import { registerUser } from "../../api/registerUser.js";
 import { useRouter } from "next/navigation";
 import ReactModal from "react-modal";
 import { Modal } from "@/components/common/Modal.js";
+import TextInput from "@/components/auth/TextInput.js";
+import Button from "@/components/common/Button.js";
 
 export default function Signup() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -54,81 +56,46 @@ export default function Signup() {
     };
 
     return (
-        <div className=" flex items-center justify-center min-h-screen">
-            <Head>
-                <title>회원가입 페이지</title>
-            </Head>
-
-            <div className="bg-white border border-slate-200 rounded-xl p-8 w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-6 text-center">
-                    회원가입
-                </h2>
+        <section className="py-28 overflow-hidden">
+            <div className=" max-w-lg mx-auto py-12 px-16 bg-white border border-slate-200 rounded-xl">
+                <h3 className="mb-5 text-3xl text-gray-500 font-semibold">
+                    Sign Up
+                </h3>
+                <p className="mb-8 text-base text-gray-300 font-medium">
+                    Create an account to get started.
+                </p>
                 <form action="/signup" method="POST" onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="flex items-center border-b border-gray-300 pl-2 pb-2">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="email@example.com"
-                                className="w-full border-none focus:outline-none"
-                                required
-                                onChange={handleChangeEmail}
-                            />
-                        </label>
+                    <TextInput
+                        label="Email"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        setValue={handleChangeEmail}
+                    />
+                    <TextInput
+                        label="Username"
+                        type="text"
+                        placeholder="Username"
+                        value={name}
+                        setValue={handleChangeName}
+                    />
+                    <TextInput
+                        label="Password"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        setValue={handleChangePassword}
+                    />
+                    <TextInput
+                        label="Confirm Password"
+                        type="password"
+                        placeholder="Confirm Password"
+                        value={passwordConfirm}
+                        setValue={handleChangePasswordConfirm}
+                    />
+                    <div className="mt-8">
+                        <Button type="submit" text="Sign up" />
                     </div>
-                    <div className="mb-4">
-                        <label className="flex items-center border-b border-gray-300 pl-2 pb-2">
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="아이디를 입력해주세요"
-                                className="w-full border-none focus:outline-none"
-                                required
-                                onChange={handleChangeName}
-                            />
-                        </label>
-                    </div>
-                    <div className="mb-4">
-                        <label className="flex items-center border-b border-gray-300 pl-2 pb-2">
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="비밀번호를 입력해주세요"
-                                onChange={handleChangePassword}
-                                className="w-full border-none focus:outline-none"
-                                required
-                            />
-                            <i className="fas fa-eye text-gray-400 ml-2 cursor-pointer"></i>
-                        </label>
-                    </div>
-
-                    <div className="mb-4">
-                        <label className="flex items-center border-b border-gray-300 pl-2 pb-2">
-                            <input
-                                type="password"
-                                name="passwordcheck"
-                                placeholder="비밀번호를 확인해주세요"
-                                onChange={handleChangePasswordConfirm}
-                                className="w-full border-none focus:outline-none"
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div className="mb-4 flex items-center">
-                        <input
-                            type="checkbox"
-                            name="promotion"
-                            value="yes"
-                            className="mr-2"
-                        />
-                        <label className="text-sm">광고 수신 동의(선택)</label>
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700"
-                    >
-                        가입하기
-                    </button>
                 </form>
             </div>
             <Modal
@@ -136,6 +103,6 @@ export default function Signup() {
                 onRequestClose={closeModal}
                 errorMessage={errorMessage}
             />
-        </div>
+        </section>
     );
 }

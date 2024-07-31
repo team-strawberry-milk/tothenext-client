@@ -11,7 +11,7 @@ export const Modal = ({ isOpen, onRequestClose, errorMessage }) => {
             <div className="flex justify-center">
                 <button
                     onClick={onRequestClose}
-                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    className="mt-4 px-4 py-2 bg-gray-600 hover:bg-gray-700 focus:bg-gray-700 text-white rounded-md"
                 >
                     닫기
                 </button>
